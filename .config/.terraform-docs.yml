@@ -14,8 +14,9 @@ sections:
     - modules
 
 content: |-
-  # <Cloud> <Main resource> Terraform module
-  A Terraform module which configures your <Cloud> <Main resource>. <Relevant docs>
+  # AWS VPC peering module
+  A Terraform module which configures VPC peering between multiple VPCs in different accounts.
+
   {{ .Header }}
 
   ## Example
@@ -23,14 +24,7 @@ content: |-
   {{ include "./example/main.tf" }}
   ```
 
-  {{ .Requirements }}
-
-  {{ .Providers }}
-
-  {{ .Resources }}
-
-  {{ .Inputs }}
-
-  {{ .Outputs }}
+  {{ include "./modules/vpc-peering-requester/README.md" }}
+  {{ include "./modules/vpc-peering-accepter/README.md" }}
 
   {{ .Footer }}

@@ -1,0 +1,31 @@
+formatter: "markdown"
+
+header-from: ./.config/header.md
+footer-from: ./.config/footer.md
+
+output:
+  file: ./README.md
+  mode: replace
+  template: |-
+    {{ .Content }}
+
+sections:
+  hide:
+    - modules
+
+content: |-
+  # AWS VPC peering requester module
+  A Terraform module which configures VPC peering between multiple VPCs. This submodule creates a requester VPC peering connection. 
+
+  {{ .Header }}
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
