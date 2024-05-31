@@ -14,7 +14,7 @@ A Terraform module which configures VPC peering between multiple VPCs. This subm
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.52.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5 |
 
 ## Resources
 
@@ -35,10 +35,12 @@ A Terraform module which configures VPC peering between multiple VPCs. This subm
 | <a name="input_peer_region"></a> [peer\_region](#input\_peer\_region) | The region of the accepter VPC. | `string` | n/a | yes |
 | <a name="input_requester_vpc_id"></a> [requester\_vpc\_id](#input\_requester\_vpc\_id) | The ID of the requester VPC. | `string` | n/a | yes |
 | <a name="input_route_table_ids"></a> [route\_table\_ids](#input\_route\_table\_ids) | The route tables for which to install the internet route to the PCX. | `list(string)` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_vpc_peering_id"></a> [vpc\_peering\_id](#output\_vpc\_peering\_id) | The ID of the VPC peering connection. |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the VPC peering connection. |
+| <a name="output_peer_vpc_id"></a> [peer\_vpc\_id](#output\_peer\_vpc\_id) | The ID of the accepting VPC. |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the requesting VPC. |

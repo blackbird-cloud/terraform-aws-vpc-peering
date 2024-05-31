@@ -28,6 +28,7 @@ variable "auto_accept" {
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)
+  default     = {}
 }
 
 variable "route_table_ids" {
