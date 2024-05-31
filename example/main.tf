@@ -15,8 +15,10 @@ module "accepter" {
   source  = "blackbird-cloud/vpc-peering/aws//modules/vpc-peering-accepter"
   version = "~> 1"
 
-  vpc_connection_id = module.requester.vpc_peering_connection_id
+  vpc_peering_connection_id = module.requester.id
 
   auto_accept     = false
   route_table_ids = ["rtb-12345678", "rtb-87654321"]
+
+  requester_cidr_block = "20.0.0.0/16"
 }

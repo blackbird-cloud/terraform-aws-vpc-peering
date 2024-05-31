@@ -22,10 +22,12 @@ module "accepter" {
   source  = "blackbird-cloud/vpc-peering/aws//modules/vpc-peering-accepter"
   version = "~> 1"
 
-  vpc_connection_id = module.requester.vpc_peering_connection_id
+  vpc_peering_connection_id = module.requester.id
 
   auto_accept     = false
   route_table_ids = ["rtb-12345678", "rtb-87654321"]
+
+  requester_cidr_block = "20.0.0.0/16"
 }
 ```
 
@@ -66,13 +68,15 @@ A Terraform module which configures VPC peering between multiple VPCs. This subm
 | <a name="input_peer_region"></a> [peer\_region](#input\_peer\_region) | The region of the accepter VPC. | `string` | n/a | yes |
 | <a name="input_requester_vpc_id"></a> [requester\_vpc\_id](#input\_requester\_vpc\_id) | The ID of the requester VPC. | `string` | n/a | yes |
 | <a name="input_route_table_ids"></a> [route\_table\_ids](#input\_route\_table\_ids) | The route tables for which to install the internet route to the PCX. | `list(string)` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_vpc_peering_id"></a> [vpc\_peering\_id](#output\_vpc\_peering\_id) | The ID of the VPC peering connection. |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the VPC peering connection. |
+| <a name="output_peer_vpc_id"></a> [peer\_vpc\_id](#output\_peer\_vpc\_id) | The ID of the accepting VPC. |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the requesting VPC. |
 # AWS VPC peering accepter module
 A Terraform module which configures VPC peering between multiple VPCs. This submodule creates an accepter VPC peering connection. 
 
@@ -105,7 +109,7 @@ A Terraform module which configures VPC peering between multiple VPCs. This subm
 | <a name="input_auto_accept"></a> [auto\_accept](#input\_auto\_accept) | Whether the VPC peering connection should be automatically accepted. | `bool` | `false` | no |
 | <a name="input_requester_cidr_block"></a> [requester\_cidr\_block](#input\_requester\_cidr\_block) | The CIDR block of the requester VPC. | `string` | n/a | yes |
 | <a name="input_route_table_ids"></a> [route\_table\_ids](#input\_route\_table\_ids) | The route tables for which to install the internet route to the PCX. | `list(string)` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 | <a name="input_vpc_peering_connection_id"></a> [vpc\_peering\_connection\_id](#input\_vpc\_peering\_connection\_id) | The ID of the VPC peering connection. | `string` | n/a | yes |
 
 ## Outputs
@@ -113,6 +117,8 @@ A Terraform module which configures VPC peering between multiple VPCs. This subm
 | Name | Description |
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | The ID of the VPC peering connection accepter. |
+| <a name="output_peer_vpc_id"></a> [peer\_vpc\_id](#output\_peer\_vpc\_id) | The ID of the requesting VPC |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the accepting VPC |
 
 ## About
 
