@@ -14,7 +14,7 @@ A Terraform module which configures VPC peering between multiple VPCs. This subm
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.52.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 5 |
 
 ## Resources
 
