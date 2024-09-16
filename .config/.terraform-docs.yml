@@ -14,8 +14,7 @@ sections:
     - modules
 
 content: |-
-  # AWS VPC peering module
-  A Terraform module which configures VPC peering between multiple VPCs in different accounts.
+  {{ include "./.config/title.md"}}
 
   {{ .Header }}
 
@@ -24,7 +23,6 @@ content: |-
   {{ include "./example/main.tf" }}
   ```
 
-  {{ include "./modules/vpc-peering-requester/README.md" }}
-  {{ include "./modules/vpc-peering-accepter/README.md" }}
+  {{ include "./.config/modules.md"}}
 
   {{ .Footer }}
